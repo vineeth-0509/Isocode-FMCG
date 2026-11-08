@@ -1,6 +1,6 @@
 import { Prisma, type OrderSource, type OrderStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { AppError } from "@/lib/errors";
+
 import { loadPricingData } from "@/server/catalogue";
 import { parseSegment } from "@/server/capture/rules";
 import {
@@ -11,6 +11,7 @@ import {
   type PricedCart,
   type PricedLine,
 } from "@/server/pricing";
+import { AppError } from "@/lib/error";
 
 const OPEN: OrderStatus[] = ["PLACED", "CREDIT_HOLD"];
 const isOpen = (s: OrderStatus) => OPEN.includes(s);

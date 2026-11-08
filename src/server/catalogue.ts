@@ -82,6 +82,8 @@ export async function loadPricingData(
       },
     ]),
   );
-  const prices = new Map(priceRows.map((p) => [p.skuId, p.piecePricePaise]));
+  const prices = new Map<string, number>(
+    priceRows.map((p: { skuId: string; piecePricePaise: number }): [string, number] => [p.skuId, p.piecePricePaise]),
+  );
   return { skus, prices };
 }
